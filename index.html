@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wingo VIP Predictor | Developer Safait</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: 'Courier New', Courier, monospace; background-color: #050505; color: #00ff41; margin: 0; padding: 20px; text-align: center; }
+        .box { border: 2px solid #00ff41; padding: 20px; border-radius: 15px; background: rgba(0, 255, 65, 0.05); box-shadow: 0 0 20px #00ff41; max-width: 400px; margin: auto; }
+        .dev-name { color: #fff; background: #e94560; padding: 2px 10px; border-radius: 5px; font-weight: bold; }
+        .timer { font-size: 3em; margin: 10px 0; color: #ff3e3e; text-shadow: 0 0 10px red; }
+        .vip-status { font-size: 0.9em; color: #ffeb3b; margin-bottom: 10px; }
+        .result-box { margin-top: 20px; border: 1px dashed #00ff41; padding: 15px; background: rgba(0,0,0,0.5); }
+        .signal { font-size: 1.8em; font-weight: bold; display: block; margin: 10px 0; }
+        .btn-vip { background-color: #e94560; color: white; border: none; padding: 12px 25px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 15px; box-shadow: 0 0 10px #e94560; width: 100%; }
+        .btn-telegram { background-color: #0088cc; color: white; border: none; padding: 12px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 15px; font-size: 1em; font-weight: bold; width: 90%; }
+        #log { font-size: 0.7em; color: #888; margin-top: 10px; height: 40px; overflow: hidden; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2 style="margin-bottom: 5px;">WINGO VIP SYSTEM</h2>
+    <div class="vip-status">SERVER STATUS: <span style="color: #00ff41;">ENCRYPTED</span></div>
+    <p>Developed by <span class="dev-name">Developer Safait</span></p>
+
+    <div style="font-size: 1.1em; color: #00d2ff;">Period: <span id="period">20260118001</span></div>
+    <div class="timer" id="timer">00:30</div>
+
+    <div class="result-box">
+        <div id="log">System Ready...</div>
+        <span class="signal" id="color-sig">---</span>
+        <span class="signal" id="bs-sig">---</span>
+        <span class="signal" id="num-sig" style="color: #ffeb3b;">---</span>
+    </div>
+
+    <button class="btn-vip" onclick="activateVIP()">ACTIVATE VIP ALGORITHM</button>
+    
+    <a href="https://t.me/Safait2009" class="btn-telegram">Contact @Safait2009 for VIP</a>
+</div>
+
+<script>
+    let timeLeft = 30;
+    let period = 20260118001;
+    let isVipActive = false;
+
+    function activateVIP() {
+        let log = document.getElementById('log');
+        log.style.color = "#00ff41";
+        log.innerText = "Connecting to DK Win Server...";
+        
+        setTimeout(() => { log.innerText = "Bypassing Firewall..."; }, 1000);
+        setTimeout(() => { log.innerText = "Extracting Hash Data..."; }, 2000);
+        setTimeout(() => { 
+            log.innerText = "VIP ALGORITHM ACTIVATED!"; 
+            isVipActive = true;
+            generateSignal();
+        }, 3000);
+    }
+
+    function startTimer() {
+        setInterval(() => {
+            if (timeLeft <= 0) {
+                timeLeft = 30;
+                period++;
+                document.getElementById('period').innerText = period;
+                generateSignal();
+            }
+            document.getElementById('timer').innerText = "00:" + (timeLeft < 10 ? "0" + timeLeft : timeLeft);
+            timeLeft--;
+        }, 1000);
+    }
+
+    function generateSignal() {
+        if(!isVipActive) {
+            document.getElementById('log').innerText = "Running Standard Analysis...";
+        }
+
+        const colors = ["GREEN", "RED"];
+        let color = colors[Math.floor(Math.random() * colors.length)];
+        let bigSmall = Math.random() > 0.5 ? "BIG" : "SMALL";
+        let number = Math.floor(Math.random() * 10);
+
+        let colorEl = document.getElementById('color-sig');
+        colorEl.innerText = color;
+        colorEl.style.color = color === "RED" ? "#ff4d4d" : "#4dff4d";
+
+        document.getElementById('bs-sig').innerText = "SIZE: " + bigSmall;
+        document.getElementById('num-sig').innerText = "LUCKY NUMBER: " + number;
+    }
+
+    startTimer();
+</script>
+
+</body>
+</html>
